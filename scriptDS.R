@@ -61,3 +61,15 @@ plot(airq ~ vala, data = Airq, xlab = "Valor das empresas",
 
 abline(lm(Airq$airq ~ Airq$vala), col = "darkred", lwd = 1.5)
 
+
+#Gráficos de correlação
+library(corrgram) # Esse pacote mostra as relações de causa e efeito entre as variáveis
+corrgram(Airq, upper.panel = panel.cor)
+
+library(PerformanceAnalytics) # Esse pacote mostra o histograma de cada uma dessas variáveis, além das correlações existentes
+
+# Esse pacote considera apenas valores contínuos, e não categóricos
+Airq2 <- Airq[,-5] # Para resolver isso, cria-se um banco de dados temporário com as variáveis que se busca um valor
+chart.Correlation(Airq2)
+
+
